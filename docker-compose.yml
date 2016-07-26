@@ -1,0 +1,17 @@
+web:
+    build: ./web
+    ports:
+        - 80:80
+    volumes:
+        - /mnt/host/logs:/mnt/host/log:rw
+        - /var/www/html:/var/www/html:rw
+    links:
+        - db
+
+db:
+    build: ./db
+    ports:
+       - 3306:3306
+    volumes:
+       - mysql_data:/var/lib/mysql
+
